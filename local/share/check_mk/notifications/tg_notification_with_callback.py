@@ -172,7 +172,13 @@ class TGnotification:
         elif notification_type == "ACKNOWLEDGEMENT":
             message += " Acknowledged"
             message += " " + os.environ['NOTIFY_NOTIFICATIONCOMMENT']
-
+            
+        elif notification_type.startswith("ALERTHANDLER"):
+            message += " Alert Handler"
+            message += " " + os.environ['NOTIFY_ALERTHANDLERSHORTSTATE']
+            message += " " + os.environ['NOTIFY_ALERTHANDLERNAME'] + ":"
+            message += " " + os.environ['NOTIFY_ALERTHANDLEROUTPUT']
+            
         elif notification_type == "CUSTOM":
             message += " Custom Notification"
             message += " " + os.environ['NOTIFY_NOTIFICATIONCOMMENT']
